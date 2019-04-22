@@ -7,12 +7,13 @@ public class MouseController : MonoBehaviour
 
     RaycastHit hit;
     private Vector3 targetPosition;                     //mouse left button clicked position for object movement
-
+    private Vector3 mousePosition;
     private string[] selectedObject = null;
 
     void Awake()
     {
         targetPosition = Vector3.zero;
+        mousePosition = Vector3.zero;
     }
     // Update is called once per frame
     void Update()
@@ -20,6 +21,8 @@ public class MouseController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
+            mousePosition = hit.point;
+            Debug.Log(hit.point);
             // mouse left button down
             if (Input.GetMouseButtonDown(0))
             {
@@ -55,5 +58,8 @@ public class MouseController : MonoBehaviour
     {
         targetPosition = Vector3.zero;
     }
-
+    public Vector3 GetMousePosition()
+    {
+        return mousePosition;
+    }
 }
