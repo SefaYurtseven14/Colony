@@ -8,7 +8,7 @@ TagManager:
   - Tree
   - Ocean
   - Mine
-  - Ship
+  - PlayerShip
   layers:
   - Default
   - TransparentFX
